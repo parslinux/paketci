@@ -102,6 +102,8 @@ publish    Derlenen paketleri PyPI veya TestPyPI'a yükler
 completion Kabuk otomatik tamamlama (bash/zsh/fish) betiğini üretir veya kurar
 dedupe     Bağımlılık kısıtlamalarını denetler ve tek sürüm uyumunu doğrular
 workspace  Çoklu paket (monorepo) çalışma alanlarını listeler ve komut koşturur
+audit      Kilitli paketleri bilinen güvenlik açıklarına (CVE/GHSA) karşı tarar
+export     paketci.lock dosyasını standart requirements.txt formatına dönüştürür
 ```
 
 ### Global Seçenekler

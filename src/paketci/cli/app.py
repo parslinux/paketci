@@ -8,7 +8,30 @@ import typer
 from rich import print as rprint
 
 from paketci import __version__
-from paketci.cli.commands import add, build, cache, check, completion, dedupe, init, install, licenses, list, lock, outdated, publish, remove, run, sync, tree, update, why, workspace
+from paketci.cli.commands import (
+    add,
+    audit,
+    build,
+    cache,
+    check,
+    completion,
+    dedupe,
+    export,
+    init,
+    install,
+    licenses,
+    list,
+    lock,
+    outdated,
+    publish,
+    remove,
+    run,
+    sync,
+    tree,
+    update,
+    why,
+    workspace,
+)
 from paketci.utils.logging import setup_logging
 
 # ─── Ana uygulama ─────────────────────────────────────────────────────────────
@@ -34,6 +57,8 @@ app.command("list")(list.list_cmd)
 app.command("tree")(tree.tree_cmd)
 app.command("why")(why.why_cmd)
 app.command("check")(check.check_cmd)
+app.command("audit")(audit.audit_cmd)
+app.command("export")(export.export_cmd)
 app.command("outdated")(outdated.outdated_cmd)
 app.command("licenses")(licenses.licenses_cmd)
 app.command("dedupe")(dedupe.dedupe_cmd)

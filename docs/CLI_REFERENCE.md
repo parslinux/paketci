@@ -170,4 +170,25 @@ paketci workspace run pytest
 paketci workspace run --member pkg-a ruff check
 ```
 
+### 21. `audit`
+Projedeki kilitli paketleri bilinen güvenlik açıklarına (CVE ve GHSA) karşı OSV.dev üzerinden tarar.
+```bash
+paketci audit [--strict]
+```
+- `--strict`: Zafiyet tespit edildiğinde çıkış kodu 1 (exit 1) üretir (CI güvenlik kapıları için).
+
+### 22. `export`
+`paketci.lock` dosyasını pip uyumlu standart `requirements.txt` formatına dönüştürür.
+```bash
+# Ekrana bas (stdout):
+paketci export
+
+# Dosyaya yaz:
+paketci export -o requirements.txt
+
+# Hash'siz yalın format:
+paketci export -o requirements.txt --no-hashes
+```
+
+
 

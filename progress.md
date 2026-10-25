@@ -128,6 +128,8 @@ Oncelik sirasi:
 - [x] GitHub Actions CI iş akışı (`.github/workflows/ci.yml`) (Tamamlandı)
 - [x] Peer dependency uyarıları (`[tool.paketci.peer-dependencies]` + plugin heuristics) (Tamamlandı)
 - [x] Kendi build backend'i (`paketci.build_backend` PEP 517 standalone) (Tamamlandı)
+- [x] `paketci audit` — OSV.dev ile zafiyet ve CVE tarayıcısı (Tamamlandı)
+- [x] `paketci export` — pip requirements.txt formatına dönüştürme (Tamamlandı)
 - [ ] Native SAT solver (opsiyonel Rust/C eklentisi)
 
 ---
