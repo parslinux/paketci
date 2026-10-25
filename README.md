@@ -218,3 +218,4 @@ Geliştirme notları ve ilerleme için [`CLAUDE.md`](CLAUDE.md) ve [`progress.md
 ## Lisans
  
 Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
+# paketci
