@@ -130,7 +130,7 @@ Oncelik sirasi:
 - [x] Kendi build backend'i (`paketci.build_backend` PEP 517 standalone) (Tamamlandı)
 - [x] `paketci audit` — OSV.dev ile zafiyet ve CVE tarayıcısı (Tamamlandı)
 - [x] `paketci export` — pip requirements.txt formatına dönüştürme (Tamamlandı)
-- [ ] Native SAT solver (opsiyonel Rust/C eklentisi)
+- [x] Native SAT solver (Pure-Python DPLL / CNF motoru — paketci lock --solver=sat) (Tamamlandı)
 
 ---
 

@@ -14,12 +14,13 @@ app = typer.Typer()
 
 @app.command("lock")
 def lock_cmd(
-    offline: Annotated[bool, typer.Option("--offline")] = False,
+    offline: Annotated[bool, typer.Option("--offline", help="Ağa çıkmadan yalnızca önbellekten çözümler.")] = False,
+    solver: Annotated[str, typer.Option("--solver", "-s", help="Çözücü motoru: 'resolvelib' (varsayılan) veya 'sat' (Native DPLL).")] = "resolvelib",
 ) -> None:
     """pyproject.toml'u okuyup lockfile oluşturur/günceller."""
     try:
-        with ui.spinner("Bağımlılıklar çözümleniyor..."):
-            operations.lock(offline=offline)
+        with ui.spinner(f"Bağımlılıklar çözümleniyor ({solver})..."):
+            operations.lock(offline=offline, solver=solver)
         ui.success("paketci.lock güncellendi.")
     except exceptions.ResolveError as exc:
         ui.print_error_panel("Çözümleme Hatası", str(exc))

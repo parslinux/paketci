@@ -235,6 +235,7 @@ def remove(
 def lock(
     project_root: Optional[Path] = None,
     offline: bool = False,
+    solver: str = "resolvelib",
 ) -> None:
     """`paketci lock` — pyproject.toml'dan lockfile oluşturur/günceller."""
     root = project_root or find_project_root()
@@ -248,10 +249,10 @@ def lock(
 
     client, cache = _make_client_and_cache(config.index_url)
 
-    logger.info("🔍 Çözümleniyor...")
+    logger.info("🔍 Çözümleniyor (%s)...", solver)
 
     with client:
-        result = solve(reqs, client, cache)
+        result = solve(reqs, client, cache, solver_type=solver)
         graph = _build_locked_graph(result, client, cache, config.requires_python)
 
     lock_path = root / config.lockfile_path

@@ -35,6 +35,7 @@ def solve(
     client: PyPIClient,
     cache: MetadataCache,
     max_rounds: int = 100,
+    solver_type: str = "resolvelib",
 ) -> SolveResult:
     """
     Verilen gereksinimler için bağımlılık grafiğini çözer.
@@ -44,6 +45,7 @@ def solve(
         client: Sync PyPI istemcisi (with bloğu içinde açık olmalı).
         cache: Metadata önbelleği.
         max_rounds: resolvelib maksimum tur sayısı.
+        solver_type: 'resolvelib' veya 'sat' (Native DPLL).
 
     Returns:
         SolveResult — çözülmüş paket versiyonları.
@@ -51,6 +53,10 @@ def solve(
     Raises:
         ResolveError: Çözüm bulunamazsa.
     """
+    if solver_type == "sat":
+        from paketci.resolver.sat_solver import solve_with_sat
+        return solve_with_sat(requirements, client, cache)
+
     provider = PaketciProvider(
         requirements=requirements,
         client=client,
