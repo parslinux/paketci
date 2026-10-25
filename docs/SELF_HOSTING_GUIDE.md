@@ -58,6 +58,20 @@ export PAKETCI_INDEX_URL="https://kullanici:parola@pypi.sirket.com/simple"
 paketci install
 ```
 
+### C. `paketci config` ile Güvenli Kimlik Bilgisi Saklama (En Güvenli Yol):
+Token veya parolayı projenin kod dosyalarına gömmek yerine kullanıcı düzeyinde maskeli olarak saklayabilirsiniz:
+
+```bash
+# Şirket deposu için token kaydet:
+paketci config set auth.nexus.sirketiniz.internal secret-api-token-12345
+
+# Varsayılan depo indeksini sabitle:
+paketci config set default_index https://nexus.sirketiniz.internal/simple
+
+# Ayarları listele (token otomatik maskelenir):
+paketci config list
+```
+
 ---
 
 ## 4. Yerel devpi / pypiserver Hızlı Kurulumu

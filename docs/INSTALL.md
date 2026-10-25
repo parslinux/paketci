@@ -22,7 +22,7 @@ Bu kılavuz, `paketci` aracını sisteminize kurma, sanal ortamları yapılandı
 Depoyu klonlayıp sanal ortama kurulabilir:
 
 ```bash
-git clone https://github.com/can/paketci.git
+git clone git@github.com:parslinux/paketci.git
 cd paketci
 
 # Sanal ortam oluştur
@@ -41,12 +41,21 @@ paketci --help
 
 ### B. Tek Başına Bağımsız Kullanım (pipx veya uv tool ile)
 
-İleride PyPI yayını sonrasında doğrudan izole bir CLI aracı olarak:
+Doğrudan izole bir CLI aracı olarak:
 
 ```bash
 pipx install paketci
 # veya
 uv tool install paketci
+```
+
+### C. Kendi Kendini Güncelleme (Self-Update)
+
+Kurulu olan `paketci` sürümünü doğrudan terminalden yükseltebilirsiniz:
+
+```bash
+paketci self-update
+paketci self-update --check
 ```
 
 ---

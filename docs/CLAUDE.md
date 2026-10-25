@@ -7,7 +7,8 @@ Bu dosyanın aslı ve güncel kopyası proje kök dizininde yer almaktadır:
 
 ## Özet Bağlam
 
-- **Proje:** `paketci` (Modern Python paket yöneticisi)
+- **Proje:** `paketci` (Modern, bağımsız Python paket yöneticisi)
 - **Mimari:** Tek yönlü katmanlı mimari (`CLI` ➔ `core.operations` ➔ `domain servisleri` ➔ `utils`)
-- **Temel Motorlar:** `resolvelib` (çözümleme), `installer` (wheel kurulumu), `httpx` (ağ ve indirme), `tomlkit` (pyproject.toml).
-- **Test Komutu:** `paketci run pytest -v`
+- **Temel Motorlar:** `resolvelib` + `Native SAT (DPLL)` (çözümleme), `installer` (wheel kurulumu), `httpx` (ağ ve indirme), `tomlkit` (pyproject.toml), `paketci.build_backend` (PEP 517).
+- **Test Komutu:** `paketci run pytest -v` (73/73 test başarılı)
+- **Komut Sayısı:** 25 bağımsız CLI komutu

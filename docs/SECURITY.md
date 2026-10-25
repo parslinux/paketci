@@ -19,6 +19,17 @@ Güvenlik, `paketci` projesinin temel tasarım önceliklerinden biridir. Bu dok�
 ### C. Yanked (Geri Çekilmiş) Sürüm Koruması
 - PyPI üzerinde güvenlik açığı veya kritik hata nedeniyle "yanked" (yayından çekilmiş) olarak işaretlenen sürümler çözümleme motoru tarafından otomatik olarak elenir.
 
+### D. Otomatik Güvenlik Açığı Taraması (`paketci audit`)
+- `paketci audit` komutu, kilitli tüm bağımlılıkları OSV.dev (Google Açık Kaynak Güvenlik Veritabanı) ve PyPA Advisory veritabanı üzerinden asenkron olarak sorgular.
+- CVE ve GHSA kayıtları, zafiyetin etki derecesi ve yamalanmış sürümleri bildirilir. CI/CD pipeline'larında `--strict` bayrağı ile güvenlik kapısı oluşturulabilir.
+
+### E. Kimlik Bilgisi ve Parola Güvenliği (`paketci config`)
+- Global konfigürasyonda (`~/.config/paketci/config.toml`) depolanan API token ve parolalar (`auth.*`) ekrana yazdırılırken (`paketci config list` / `get`) otomatik olarak maskelenir (`sk-***123`).
+- Token'ların terminal geçmişine veya ekran görüntülerine sızması önlenir.
+
+### F. Değişmez Kilit Dosyası (`--frozen-lockfile`)
+- Üretim veya CI ortamlarında `paketci install --frozen-lockfile` kullanılarak `paketci.lock` dosyasının izinsiz değiştirilmesi engellenir; ortam yalnızca kilitli sürümlerle birebir eşlenir.
+
 ---
 
 ## 2. Güvenlik Açığı Bildirimi (Reporting Vulnerabilities)

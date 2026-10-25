@@ -52,6 +52,12 @@ extra-index-urls = [
 ]
 ```
 
+### Yöntem C: `paketci config` ile Kalıcı Token Depolama (CLI Entegre)
+```bash
+paketci config set auth.market.mcsm.io "MCSM_LICENSE_KEY_XYZ"
+paketci install
+```
+
 ---
 
 ## 4. MCSM Mağaza Entegrasyon Kancası (Hook)

@@ -44,3 +44,14 @@ Kod içinden sürüm öğrenmek için:
 import paketci
 print(paketci.__version__)  # "0.1.0"
 ```
+
+### Proje Python Sürümünü Sabitleme (`.python-version`):
+```bash
+paketci python pin 3.12
+```
+
+### Yeni Sürüme Yükseltme (`self-update`):
+```bash
+paketci self-update --check
+paketci self-update
+```

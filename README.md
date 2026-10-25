@@ -10,9 +10,14 @@ paketci; pip'in üzerine değil, Python ekosisteminin standart araçları üzeri
 | Özellik | Açıklama |
 |---------|----------|
 | ⚡ **Paralel İndirme** | `asyncio` + `httpx` ile wheel'ler aynı anda indirilir |
-| 🔒 **Deterministik Lockfile** | `resolvelib` tabanlı çözümleme, `paketci.lock` JSON formatı |
+| 🔒 **Deterministik Lockfile** | `resolvelib` ve `Native SAT (DPLL)` çözümleme, `paketci.lock` JSON formatı |
+| 🛡️ **Güvenlik Taraması** | OSV.dev ve PyPA veritabanı ile CVE/GHSA açıkları denetimi (`audit`) |
 | 🗄️ **Content-Addressable Cache** | SHA-256 ile wheel deposu; projeler arası hardlink paylaşımı |
-| 🔍 **`why` Komutu** | "Bu paket neden kurulu?" sorusunu ağaç görünümüyle yanıtlar |
+| 🏢 **Workspaces / Monorepo** | Çoklu paket projelerini tek merkezden çalıştırma ve yönetme |
+| 🐍 **Python Toolchain** | Sistemdeki Python sürümlerini tarama, hedefleme ve sabitleme (`.python-version`) |
+| 🏗️ **PEP 517 Build-Backend** | Saf Python, sıfır dış bağımlılıklı yerel sdist ve wheel derleyici (`paketci.build_backend`) |
+| 🔗 **Git & Editable Paketler** | `git+https://...` ve yerel klasörleri doğrudan ortama bağlama (`add -e`) |
+| 🔍 **`why` ve `tree` Komutları** | Bağımlılık ağacını hiyerarşik renkli görselleştirme ve sebep analizi |
 | 🌐 **Offline Mod** | `--offline` ile önbellekten kur, ağa çıkma |
 | 🧊 **Frozen Lockfile** | `--frozen-lockfile` ile CI'da değişmez kurulum garantisi |
 | 🎨 **Zengin CLI** | `typer` + `rich` ile renkli, açıklayıcı terminal çıktısı |
@@ -21,16 +26,10 @@ paketci; pip'in üzerine değil, Python ekosisteminin standart araçları üzeri
 
 ## Kurulum
 
-> PyPI'da henüz yayınlanmadı. Kaynaktan kurulum:
+> Kaynaktan kurulum:
 
 ```bash
-pip install paketci
-```
-
-Veya geliştirme ortamı için:
-
-```bash
-git clone <repo>
+git clone git@github.com:parslinux/paketci.git
 cd paketci
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
@@ -214,7 +213,7 @@ PYTHONPATH=src python -m paketci --help
 
 ---
 
-> 🚀 **MVP Durumu:** `add`, `remove`, `lock`, `install`, `sync`, `update`, `list` ve `why` komutları canlı PyPI çözümleme motoru ve paralel idempotent kurulum altyapısıyla çalışmaktadır.
+> 🚀 **Sürüm 0.1.0:** Tüm 25 CLI komutu, 73/73 test, Native SAT (DPLL) ve resolvelib çift motoru, bağımsız PEP 517 build backend'i, OSV.dev güvenlik denetimi (`audit`), workspace monorepo ve Python sürüm sabitleme (`.python-version`) desteğiyle tam kararlı sürümdedir.
 
 Geliştirme notları ve ilerleme için [`CLAUDE.md`](CLAUDE.md) ve [`progress.md`](progress.md) dosyalarına bakın.
 
@@ -223,4 +222,3 @@ Geliştirme notları ve ilerleme için [`CLAUDE.md`](CLAUDE.md) ve [`progress.md
 ## Lisans
  
 Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
-# paketci

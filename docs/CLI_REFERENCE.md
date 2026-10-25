@@ -35,9 +35,11 @@ paketci init [PROJE_ADI] [--venv] [--python <SURUM>]
 ### 2. `add`
 Projeye yeni bağımlılık(lar) ekler, çözer, kilitler ve kurar.
 ```bash
-paketci add <paket_adi>... [--dev] [--group <GRUP>] [--offline]
+paketci add <paket_adi>... [-e / --editable <YOL>] [--dev] [--group <GRUP>] [--offline]
 ```
 - Örnek: `paketci add requests "httpx>=0.27" rich`
+- Git bağımlılığı: `paketci add git+https://github.com/psf/requests.git`
+- Geliştirici / Editable mod: `paketci add -e ./yerel-paket` (ortama `.pth` linki bağlar)
 - `--dev`: `[project.optional-dependencies.dev]` grubuna ekler.
 - `--offline`: Ağa çıkmaz, sadece yerel önbellekteki paketleri kullanır.
 
@@ -51,8 +53,10 @@ paketci remove <paket_adi>... [--group <GRUP>]
 ### 4. `lock`
 `pyproject.toml` dosyasındaki gereksinimleri çözümleyerek `paketci.lock` oluşturur.
 ```bash
-paketci lock [--offline]
+paketci lock [--solver resolvelib|sat] [--offline]
 ```
+- `--solver`: Çözümleme algoritmasını seçer (`resolvelib` veya `sat`). Varsayılan: `resolvelib`. `sat` seçeneği saf Python DPLL Boolean Satisfiability motorunu kullanır.
+
 
 ### 5. `install`
 `paketci.lock` dosyasındaki tüm paketleri kurar. Resolver çalıştırmaz.

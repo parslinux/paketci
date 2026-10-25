@@ -1,8 +1,8 @@
 # paketci — Geliştirme İlerlemesi
 
-Son güncelleme: 2026-10-22
+Son güncelleme: 2026-10-25
 
-## Genel Durum: MVP İskeleti Tamamlandi
+## Genel Durum: v0.1.0 Tam Kararlı Sürüm — 25 Komut, 73/73 Test Başarılı
 
 ---
 
@@ -10,9 +10,10 @@ Son güncelleme: 2026-10-22
 
 ### Faz 0 — Proje Kurulumu
 - [x] `src/` layout, `pyproject.toml`, `.gitignore`
-- [x] Sanal ortam (`.venv`) + tum bagimliliklar kuruldu
+- [x] Sanal ortam (`.venv`) + tüm bağımlılıklar kuruldu
 - [x] Editable install (`pip install -e .`)
-- [x] pytest ayari, 27/27 test geciyor
+- [x] pytest ayarı, 73/73 test geçiyor
+- [x] Pre-commit ve Ruff linter entegrasyonu (`.pre-commit-config.yaml`)
 
 ### Faz 1 — Utils ve Temel Altyapi
 - [x] `utils/paths.py` — platformdirs, `link_or_copy` (hardlink -> copy fallback)
@@ -66,10 +67,23 @@ Son güncelleme: 2026-10-22
 - [x] `cli/commands/` — 8 komut: add, remove, install, lock, sync, update, list, why
 - [x] `cli/app.py` — typer root, global --verbose, --quiet, --version
 
-### Faz 10 — Testler
+### Faz 10 — Testler (Toplam 73/73 Test Başarılı)
 - [x] `tests/unit/test_config.py` (10 test)
 - [x] `tests/unit/test_lockfile.py` (5 test)
 - [x] `tests/unit/test_resolver.py` (8 test)
+- [x] `tests/unit/test_sat_solver.py` (7 test)
+- [x] `tests/unit/test_build_backend.py` (5 test)
+- [x] `tests/unit/test_env.py` (5 test)
+- [x] `tests/unit/test_init.py` (4 test)
+- [x] `tests/unit/test_check_and_run.py` (5 test)
+- [x] `tests/unit/test_tree_cache_build.py` (4 test)
+- [x] `tests/unit/test_outdated_licenses.py` (3 test)
+- [x] `tests/unit/test_publish.py` (3 test)
+- [x] `tests/unit/test_completion.py` (2 test)
+- [x] `tests/unit/test_dedupe.py` (3 test)
+- [x] `tests/unit/test_workspace.py` (3 test)
+- [x] `tests/unit/test_audit_and_export.py` (2 test)
+- [x] `tests/unit/test_config_python_vcs.py` (4 test)
 - [x] `tests/integration/test_install_flow.py` (4 test)
 - [x] `tests/fixtures/pyproject.toml`, `lockfile.json`
 

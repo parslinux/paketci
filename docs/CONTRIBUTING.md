@@ -36,14 +36,18 @@ Katkı yaparken lütfen projenin [Mimari Prensiplerine](ARCHITECTURE.md) sadık 
 Her yeni özellik veya hata düzeltmesi birim testleriyle desteklenmelidir:
 
 ```bash
-# Tüm testleri çalıştır
+# Tüm testleri çalıştır (73 test)
 paketci run pytest -v
 
 # Sadece birim testleri çalıştır
 paketci run pytest tests/unit/ -v
 
-# Tip ve format kontrolü
-paketci run pytest tests/ -q
+# Kod stili ve lint kontrolü (Ruff)
+ruff check .
+ruff format --check .
+
+# Pre-commit kancalarını koştur
+pre-commit run --all-files
 ```
 
 ---
