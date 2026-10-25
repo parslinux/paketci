@@ -215,7 +215,7 @@ PYTHONPATH=src python -m paketci --help
 
 > 🚀 **Sürüm 0.1.0:** Tüm 25 CLI komutu, 73/73 test, Native SAT (DPLL) ve resolvelib çift motoru, bağımsız PEP 517 build backend'i, OSV.dev güvenlik denetimi (`audit`), workspace monorepo ve Python sürüm sabitleme (`.python-version`) desteğiyle tam kararlı sürümdedir.
 
-Geliştirme notları ve ilerleme için [`CLAUDE.md`](CLAUDE.md) ve [`progress.md`](progress.md) dosyalarına bakın.
+Detaylı adım adım rehber için [Kullanma Kılavuzu'na (docs/KULLANMA_KILAVUZU.md)](docs/KULLANMA_KILAVUZU.md), mimari detaylar için [docs/INDEX.md](docs/INDEX.md) ve [`CLAUDE.md`](CLAUDE.md) dosyalarına bakın.
 
 ---
 

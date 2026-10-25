@@ -8,6 +8,7 @@
 
 | Doküman | Açıklama |
 |---|---|
+| [KULLANMA_KILAVUZU.md](KULLANMA_KILAVUZU.md) | Baştan sona adım adım resimli ve açıklamalı kapsamlı kullanıcı rehberi |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Katmanlı mimari, domain servisleri ve veri akış şemaları |
 | [CLI_REFERENCE.md](CLI_REFERENCE.md) | Tüm komutlar, argümanlar ve global bayrakların tam referansı |
 | [INSTALL.md](INSTALL.md) | Sistem gereksinimleri, kurulum yöntemleri ve venv yönetimi |
