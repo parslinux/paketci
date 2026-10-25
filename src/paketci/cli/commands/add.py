@@ -14,12 +14,13 @@ app = typer.Typer()
 
 @app.command("add")
 def add_cmd(
-    packages: Annotated[list[str], typer.Argument(help="Eklenecek paket(ler), PEP 508 formatında")],
-    dev: Annotated[bool, typer.Option("--dev", "-d", help="[tool.paketci.dev] grubuna ekle")] = False,
+    packages: Annotated[list[str], typer.Argument(help="Eklenecek paket(ler), PEP 508 formatında, yerel dizin veya Git URL'si")],
+    dev: Annotated[bool, typer.Option("--dev", "-d", help="[project.optional-dependencies.dev] grubuna ekle")] = False,
     group: Annotated[Optional[str], typer.Option("--group", "-g", help="İsteğe bağlı bağımlılık grubu")] = None,
     offline: Annotated[bool, typer.Option("--offline", help="Önbellekten kur, ağa çıkma")] = False,
+    editable: Annotated[bool, typer.Option("--editable", "-e", help="Yerel paketi geliştirme modunda bağla")] = False,
 ) -> None:
-    """Projeye bağımlılık ekler, çözümler ve kurar."""
+    """Projeye bağımlılık (PyPI, yerel dizin veya Git) ekler ve kurar."""
     try:
         with ui.spinner(f"Ekleniyor: {', '.join(packages)}..."):
             operations.add(
@@ -27,6 +28,7 @@ def add_cmd(
                 dev=dev,
                 optional_group=group,
                 offline=offline,
+                editable=editable,
             )
         ui.success(f"{len(packages)} paket eklendi ve kuruldu.")
         for pkg in packages:

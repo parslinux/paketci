@@ -131,6 +131,11 @@ Oncelik sirasi:
 - [x] `paketci audit` — OSV.dev ile zafiyet ve CVE tarayıcısı (Tamamlandı)
 - [x] `paketci export` — pip requirements.txt formatına dönüştürme (Tamamlandı)
 - [x] Native SAT solver (Pure-Python DPLL / CNF motoru — paketci lock --solver=sat) (Tamamlandı)
+- [x] Küresel yapılandırma ve kimlik bilgisi yönetimi (`paketci config get/set/list/unset`) (Tamamlandı)
+- [x] Python sürüm ve ortam yönetimi (`paketci python list/pin/which`) (Tamamlandı)
+- [x] Kendini güncelleme mekanizması (`paketci self-update`) (Tamamlandı)
+- [x] Git (VCS) ve yerel dizin (editable / `.pth`) paket bağımlılıkları (`paketci add -e` / `git+...`) (Tamamlandı)
+- [x] Ruff linter ve pre-commit hook yapılandırması (`.pre-commit-config.yaml`) (Tamamlandı)
 
 ---
 

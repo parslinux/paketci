@@ -15,6 +15,7 @@ from paketci.cli.commands import (
     cache,
     check,
     completion,
+    config_cmd,
     dedupe,
     export,
     init,
@@ -24,8 +25,10 @@ from paketci.cli.commands import (
     lock,
     outdated,
     publish,
+    python_cmd,
     remove,
     run,
+    self_update,
     sync,
     tree,
     update,
@@ -64,6 +67,9 @@ app.command("licenses")(licenses.licenses_cmd)
 app.command("dedupe")(dedupe.dedupe_cmd)
 app.add_typer(workspace.app, name="workspace")
 app.add_typer(cache.app, name="cache")
+app.add_typer(config_cmd.app, name="config")
+app.add_typer(python_cmd.app, name="python")
+app.command("self-update")(self_update.self_update_cmd)
 app.command("build")(build.build_cmd)
 app.command("publish")(publish.publish_cmd)
 app.command("completion")(completion.completion_cmd)

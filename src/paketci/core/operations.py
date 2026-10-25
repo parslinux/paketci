@@ -158,23 +158,50 @@ def add(
     dev: bool = False,
     optional_group: Optional[str] = None,
     offline: bool = False,
+    editable: bool = False,
     project_root: Optional[Path] = None,
 ) -> None:
     """
     `paketci add <paket>` akışı:
-    config oku → resolve → lock → fetch → install → config yaz
+    git/yerel dizin veya PyPI paketlerini çözer, kurar ve pyproject.toml'a kaydeder.
     """
+    from paketci.fetcher.vcs import is_git_url, clone_git_repo, install_editable
+
     root = project_root or find_project_root()
     loader = ConfigLoader(root)
     config = loader.load()
+    env = detect_env()
+    group = optional_group or ("dev" if dev else None)
+
+    # 1. Yerel dizin veya Git deposu kontrolü
+    standard_packages: list[str] = []
+
+    for pkg_spec in packages:
+        pkg_path = Path(pkg_spec)
+        if editable or pkg_path.is_dir():
+            target_path = pkg_path if pkg_path.is_dir() else root / pkg_path
+            name = install_editable(target_path, env)
+            dep = Dependency(name=name, constraint=f"@ file://{target_path.resolve()}")
+            loader.add_dependency(dep, optional_group=group)
+            logger.info("🔗 Yerel paket bağlandı (editable): %s (%s)", name, target_path)
+        elif is_git_url(pkg_spec):
+            cloned = clone_git_repo(pkg_spec)
+            name = install_editable(cloned, env)
+            dep = Dependency(name=name, constraint=f"@ {pkg_spec}")
+            loader.add_dependency(dep, optional_group=group)
+            logger.info("📦 Git deposu klonlandı ve bağlandı: %s (%s)", name, pkg_spec)
+        else:
+            standard_packages.append(pkg_spec)
+
+    if not standard_packages:
+        return
 
     client, cache = _make_client_and_cache(config.index_url)
-    env = detect_env()
     downloader = Downloader(offline=offline)
 
     # Mevcut bağımlılıklarla birlikte çözümle
-    existing = [d.pep508() for d in config.dependencies]
-    all_reqs = existing + packages
+    existing = [d.pep508() for d in config.dependencies if not d.constraint.startswith("@")]
+    all_reqs = existing + standard_packages
 
     logger.info("🔍 Bağımlılıklar çözümleniyor...")
 
@@ -187,11 +214,10 @@ def add(
     logger.info("🔒 Lockfile güncellendi: %s", lock_path.name)
 
     # İlgili paketleri kur (ana paket ve bağımlılıkları - idempotent)
-    group = optional_group or ("dev" if dev else None)
     _install_packages_batch(graph.all_packages(), downloader, env)
 
     # pyproject.toml'a yaz
-    for pkg_spec in packages:
+    for pkg_spec in standard_packages:
         from paketci.config.loader import _parse_dep
         dep = _parse_dep(pkg_spec)
         loader.add_dependency(dep, optional_group=group)

@@ -190,5 +190,44 @@ paketci export -o requirements.txt
 paketci export -o requirements.txt --no-hashes
 ```
 
+### 23. `config`
+Küresel ayarları ve özel depo kimlik bilgilerini (`~/.config/paketci/config.toml`) yönetir.
+```bash
+paketci config set index.corp.url https://nexus.corp.local/simple
+paketci config set index.corp.token secret-token-xyz
+paketci config get index.corp.url
+paketci config list
+paketci config unset index.corp.token
+paketci config path
+```
+
+### 24. `python`
+Sistemde kurulu Python sürümlerini tarar, hedefler ve projeye sabitler.
+```bash
+# Sistemdeki Python sürümlerini listele:
+paketci python list
+
+# Proje köküne .python-version yazarak sürümü sabitle:
+paketci python pin 3.12
+
+# Hedef veya aktif Python executable dosya yolunu göster:
+paketci python which
+paketci python which 3.11
+```
+
+### 25. `self-update`
+`paketci` aracını GitHub Releases veya PyPI üzerinden tek komutla günceller.
+```bash
+# Sadece yeni sürüm kontrolü yap:
+paketci self-update --check
+
+# En güncel kararlı sürüme güncelle:
+paketci self-update
+
+# Belirli bir sürüme güncelle/indir:
+paketci self-update --version 0.1.0
+```
+
+
 
 

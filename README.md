@@ -104,6 +104,9 @@ dedupe     Bağımlılık kısıtlamalarını denetler ve tek sürüm uyumunu do
 workspace  Çoklu paket (monorepo) çalışma alanlarını listeler ve komut koşturur
 audit      Kilitli paketleri bilinen güvenlik açıklarına (CVE/GHSA) karşı tarar
 export     paketci.lock dosyasını standart requirements.txt formatına dönüştürür
+config     Küresel yapılandırma ve kimlik bilgisi yönetimi (get/set/list/unset)
+python     Sistemdeki Python sürümlerini listeler, hedefler ve sabitler (pin)
+self-update paketci paketini doğrudan en son sürüme günceller
 ```
 
 ### Global Seçenekler
