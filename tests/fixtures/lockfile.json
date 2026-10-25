@@ -1,0 +1,34 @@
+{
+  "lockfileVersion": 1,
+  "generatedBy": "paketci 0.1.0",
+  "python": ">=3.11",
+  "packages": {
+    "requests": {
+      "version": "2.32.3",
+      "files": [
+        {
+          "filename": "requests-2.32.3-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/f9/9b/335f9764261ef915bb3769400b1c5e2d3e3c3d9c0e33f8d4b94bf533a5c/requests-2.32.3-py3-none-any.whl",
+          "sha256": "70761cfe03c773ceb22aa2f671b4757976145175cdfbe2608d42f42e6031c5f1"
+        }
+      ],
+      "dependencies": [
+        "certifi>=2017.4.17",
+        "urllib3<3,>=1.21.1",
+        "charset-normalizer<4,>=2",
+        "idna<4,>=2.5"
+      ]
+    },
+    "certifi": {
+      "version": "2024.8.30",
+      "files": [
+        {
+          "filename": "certifi-2024.8.30-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/certifi-2024.8.30-py3-none-any.whl",
+          "sha256": "922820b53db7a7257ffbda3f597266d435245903d80737e34f8a3e67eb3f3f49"
+        }
+      ],
+      "dependencies": []
+    }
+  }
+}

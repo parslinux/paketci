@@ -1,0 +1,36 @@
+# .claudeignore — Claude'un okumayacağı dosya ve dizinler
+
+# Sanal ortam (büyük, otomatik oluşturulur)
+.venv/
+venv/
+ENV/
+
+# Derleme ve dağıtım artifaktları
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Önbellek dizinleri
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Paketci'nin kendi önbelleği
+.paketci_cache/
+
+# Büyük / ikili dosyalar
+*.whl
+*.tar.gz
+*.zip
+
+# Kilit dosyaları (metin tabanlı ama dev'de ilgisiz olabilir)
+# paketci.lock  ← bunu Claude okusun, açık bırak
+
+# Log dosyaları
+*.log
